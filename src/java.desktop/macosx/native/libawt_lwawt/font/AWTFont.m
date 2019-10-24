@@ -389,7 +389,7 @@ static NSDictionary* prebuiltFamilyNames() {
 
              @".SFNS-Black" : @".SF NS",
              @".SFNS-BlackItalic" : @".SF NS",
-             @".SFNS-Bold" : @".SF NS",
+             @".SFNS-Bold" : @".AppleSystemUIFont",
              @".SFNS-BoldG1" : @".SF NS",
              @".SFNS-BoldG2" : @".SF NS",
              @".SFNS-BoldG3" : @".SF NS",
@@ -413,7 +413,7 @@ static NSDictionary* prebuiltFamilyNames() {
              @".SFNS-MediumG3" : @".SF NS",
              @".SFNS-MediumG4" : @".SF NS",
              @".SFNS-MediumItalic" : @".SF NS",
-             @".SFNS-Regular" : @".SF NS",
+             @".SFNS-Regular" : @".AppleSystemUIFont",
              @".SFNS-RegularG1" : @".SF NS",
              @".SFNS-RegularG2" : @".SF NS",
              @".SFNS-RegularG3" : @".SF NS",

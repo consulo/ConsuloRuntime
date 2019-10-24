@@ -150,9 +150,8 @@ public final class SunLayoutEngine implements LayoutEngine, LayoutEngineFactory 
             new WeakHashMap<>();
 
     private static boolean isAAT(Font2D font) {
-       // CoreText layout code ignores fractional metrics font attribute
-       // also, using CoreText layout in Harfbuzz code leads to wrong advances for emoji glyphs
-       return false;
+        // Enable CoreText layout for .AppleSystemUIFont font
+        return ".AppleSystemUIFont".equals(font.familyName);
     }
 
     private SunLayoutEngine(LayoutEngineKey key) {

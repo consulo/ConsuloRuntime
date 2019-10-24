@@ -414,8 +414,23 @@ static hb_font_t* _hb_jdk_font_create(hb_face_t* face,
     hb_font_set_scale (font,
                       HBFloatToFixed(jdkFontInfo->ptSize*jdkFontInfo->devScale),
                       HBFloatToFixed(jdkFontInfo->ptSize*jdkFontInfo->devScale));
+    hb_font_set_ptem (font, jdkFontInfo->ptSize);
   return font;
 }
+
+#ifdef MACOSX
+static hb_font_t* _hb_jdk_ct_font_create(hb_face_t* face,
+                   JDKFontInfo *jdkFontInfo) {
+
+    hb_font_t *font = NULL;
+    font = hb_font_create(face);
+    hb_font_set_scale(font,
+                     HBFloatToFixed(jdkFontInfo->ptSize),
+                     HBFloatToFixed(jdkFontInfo->ptSize));
+    hb_font_set_ptem (font, jdkFontInfo->ptSize);
+    return font;
+}
+#endif
 
 hb_font_t* hb_jdk_font_create(hb_face_t* hbFace,
                              JDKFontInfo *jdkFontInfo,

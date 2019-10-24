@@ -317,7 +317,8 @@ _hb_coretext_shaper_font_data_create (hb_font_t *font)
   if (unlikely (!face_data)) return nullptr;
   CGFontRef cg_font = (CGFontRef) (const void *) face->data.coretext;
 
-  CTFontRef ct_font = create_ct_font (cg_font, coretext_font_size_from_ptem (font->ptem));
+  CGFloat font_size = font->ptem <= 0.f ? HB_CORETEXT_DEFAULT_FONT_SIZE : font->ptem;
+  CTFontRef ct_font = create_ct_font (cg_font, font_size);
 
   if (unlikely (!ct_font))
   {
@@ -341,7 +342,7 @@ retry:
   const hb_coretext_font_data_t *data = font->data.coretext;
   if (unlikely (!data)) return nullptr;
 
-  if (fabs (CTFontGetSize((CTFontRef) data) - coretext_font_size_from_ptem (font->ptem)) > .5)
+  if (fabs (CTFontGetSize ((CTFontRef) data) - font->ptem) > .5)
   {
     /* XXX-MT-bug
      * Note that evaluating condition above can be dangerous if another thread
@@ -381,7 +382,7 @@ hb_coretext_font_create (CTFontRef ct_font)
   if (unlikely (hb_object_is_immutable (font)))
     return font;
 
-  hb_font_set_ptem (font, coretext_font_size_to_ptem (CTFontGetSize(ct_font)));
+  hb_font_set_ptem (font, CTFontGetSize (ct_font));
 
   /* Let there be dragons here... */
   font->data.coretext.cmpexch (nullptr, (hb_coretext_font_data_t *) CFRetain (ct_font));
