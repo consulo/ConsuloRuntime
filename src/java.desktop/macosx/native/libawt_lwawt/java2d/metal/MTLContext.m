@@ -392,7 +392,10 @@ MTLRenderPassDescriptor* createRenderPassDesc(id<MTLTexture> dest) {
 }
 
 - (id<MTLBlitCommandEncoder>)createBlitEncoder {
-    return _commandBuffer == nil ? nil : [_commandBuffer blitCommandEncoder];
+    if (_commandBuffer == nil) {
+        _commandBuffer = [[self.commandQueue commandBuffer] retain];
+    }
+    return [_commandBuffer blitCommandEncoder];
 }
 
 - (id<MTLRenderCommandEncoder>) createCommonRenderEncoderForDest:(id<MTLTexture>) dest {
