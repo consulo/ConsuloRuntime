@@ -36,16 +36,32 @@
             // 1. find free item
             // TODO: optimize search, use Map<(w,h,pf), TexPoolItem>
             const int count = [self.pool count];
+            int minDeltaArea = -1;
+            int minDeltaAreaIndex = -1;
             for (int c = 0; c < count; ++c) {
                 MTLTexturePoolItem *tpi = [self.pool objectAtIndex:c];
-                if (tpi == nil)
+                if (tpi == nil || tpi.isBusy || tpi.texture.pixelFormat != format) { // TODO: use swizzle when formats are not equal
                     continue;
-                // TODO: use checks tpi.texture.width <= width && tpi.texture.height <= height
-                if (tpi.texture.width == width && tpi.texture.height == height && tpi.texture.pixelFormat == format &&
-                    !tpi.isBusy) {
-                    tpi.isBusy = YES;
-                    return tpi.texture;
                 }
+                if (tpi.texture.width < width || tpi.texture.height < height) {
+                    continue;
+                }
+                const int deltaArea = tpi.texture.width*tpi.texture.height - width*height;
+                if (deltaArea == 0) {
+                    minDeltaAreaIndex = c;
+                    break;
+                }
+
+                if (minDeltaArea < 0 || deltaArea < minDeltaArea) {
+                    minDeltaAreaIndex = c;
+                    minDeltaArea = deltaArea;
+                }
+            }
+
+            if (minDeltaAreaIndex >= 0) {
+                MTLTexturePoolItem *tpi = [self.pool objectAtIndex:minDeltaAreaIndex];
+                tpi.isBusy = YES;
+                return tpi.texture;
             }
 
             // 2. create
