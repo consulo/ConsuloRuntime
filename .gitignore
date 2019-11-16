@@ -24,3 +24,6 @@ test/nashorn/lib
 NashornProfile.txt
 **/JTreport/**
 **/JTwork/**
+
+# consulo files
+.consulo/workspace.xml
