@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project>
+  <component name="ModuleManager">
+    <modules>
+      <module name="ConsuloRuntime" dirurl="file://$PROJECT_DIR$" current-layer="Default">
+        <module-layer name="Default">
+          <content url="file://$MODULE_DIR$">
+            <content-folder type="EXCLUDED" url="file://$MODULE_DIR$/.consulo" />
+          </content>
+          <orderEntry type="sourceFolder" />
+        </module-layer>
+      </module>
+      <module name="java.base" dirurl="file://$PROJECT_DIR$/src/java.base" current-layer="macOS">
+        <module-layer name="Default">
+          <extension id="java" language-level-name="JDK_11" />
+          <content url="file://$MODULE_DIR$">
+            <content-folder type="PRODUCTION" url="file://$MODULE_DIR$/share/classes" />
+          </content>
+          <orderEntry type="sourceFolder" />
+        </module-layer>
+        <module-layer name="macOS">
+          <extension id="java" language-level-name="JDK_11" />
+          <content url="file://$MODULE_DIR$">
+            <content-folder type="PRODUCTION" url="file://$MODULE_DIR$/macosx/classes" />
+            <content-folder type="PRODUCTION" url="file://$MODULE_DIR$/share/classes" />
+          </content>
+          <orderEntry type="sourceFolder" />
+        </module-layer>
+      </module>
+      <module name="java.desktop" dirurl="file://$PROJECT_DIR$/src/java.desktop" current-layer="macOS">
+        <module-layer name="Default">
+          <extension id="java" language-level-name="JDK_11" />
+          <content url="file://$MODULE_DIR$">
+            <content-folder type="PRODUCTION" url="file://$MODULE_DIR$/share/classes" />
+          </content>
+          <orderEntry type="sourceFolder" />
+          <orderEntry type="module" module-name="java.base" />
+        </module-layer>
+        <module-layer name="macOS">
+          <extension id="java" language-level-name="JDK_11" />
+          <content url="file://$MODULE_DIR$">
+            <content-folder type="PRODUCTION" url="file://$MODULE_DIR$/macosx/classes" />
+            <content-folder type="PRODUCTION" url="file://$MODULE_DIR$/share/classes" />
+          </content>
+          <orderEntry type="sourceFolder" />
+          <orderEntry type="module" module-name="java.base" />
+        </module-layer>
+      </module>
+    </modules>
+  </component>
+</project>
