@@ -23,7 +23,7 @@ Successfully built 942ea9900054
 
 $ docker run -v `pwd`../../../../:/ConsuloRuntime -it 942ea9900054
 
-# cd /JetBrainsRuntime
+# cd /ConsuloRuntime
 # sh ./configure
 # make images CONF=linux-x86_64-normal-server-release
 
