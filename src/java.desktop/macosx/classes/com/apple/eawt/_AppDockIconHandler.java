@@ -25,16 +25,20 @@
 
 package com.apple.eawt;
 
-import java.awt.*;
-import java.lang.reflect.*;
-
-import sun.lwawt.macosx.*;
-import sun.lwawt.macosx.CImage.Creator;
 import sun.awt.AWTAccessor;
+import sun.lwawt.macosx.CFRetainedResource;
+import sun.lwawt.macosx.CImage;
+import sun.lwawt.macosx.CImage.Creator;
+import sun.lwawt.macosx.CMenu;
+
+import java.awt.*;
+import java.lang.reflect.Field;
+import java.lang.reflect.Method;
 
 class _AppDockIconHandler {
     private static native void nativeSetDockMenu(final long cmenu);
     private static native void nativeSetDockIconImage(final long image);
+    private static native void nativeSetDockIconProgress(final int value);
     private static native long nativeGetDockIconImage();
     private static native void nativeSetDockIconBadge(final String badge);
 
@@ -92,6 +96,10 @@ class _AppDockIconHandler {
 
     void setDockIconBadge(final String badge) {
         nativeSetDockIconBadge(badge);
+    }
+
+    void setDockIconProgress(int value) {
+        nativeSetDockIconProgress(value);
     }
 
     @SuppressWarnings("rawtypes")
