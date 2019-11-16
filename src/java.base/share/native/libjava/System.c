@@ -110,13 +110,13 @@ Java_java_lang_System_identityHashCode(JNIEnv *env, jobject this, jobject x)
 
 /* Third party may overwrite these values. */
 #ifndef VENDOR
-#define VENDOR "JetBrains s.r.o"
+#define VENDOR "consulo.io"
 #endif
 #ifndef VENDOR_URL
-#define VENDOR_URL "https://www.jetbrains.com/"
+#define VENDOR_URL "https://consulo.io/"
 #endif
 #ifndef VENDOR_URL_BUG
-#define VENDOR_URL_BUG "https://youtrack.jetbrains.com"
+#define VENDOR_URL_BUG "https://github.com/consulo/ConsuloRuntime/issues"
 #endif
 
 #ifdef JAVA_SPECIFICATION_VENDOR /* Third party may NOT overwrite this. */
