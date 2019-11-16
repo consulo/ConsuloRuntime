@@ -314,6 +314,16 @@ public class Application {
     }
 
     /**
+     * Displays a progress bar to this application's Dock icon.
+     * Acceptable values are from 0 to 100, any other disables progress indication.
+     *
+     * @param value progress value
+     */
+    public void setDockIconProgress(final int value) {
+        iconHandler.setDockIconProgress(value);
+    }
+
+    /**
      * Attaches the contents of the provided PopupMenu to the application's Dock icon.
      *
      * @param menu the PopupMenu to attach to this application's Dock icon
